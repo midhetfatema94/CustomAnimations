@@ -17,10 +17,51 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTL-qL-22E">
+                                <rect key="frame" x="0.0" y="179" width="375" height="488"/>
+                            </scrollView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ba6-i1-fRl">
+                                <rect key="frame" x="0.0" y="158.5" width="375" height="20.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Todo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rm6-6f-XOQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Groceries" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkM-Fy-8Ek">
+                                        <rect key="frame" x="125" y="0.0" width="125" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deadlines" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aT4-dW-euf">
+                                        <rect key="frame" x="250" y="0.0" width="125" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="gTL-qL-22E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2kc-8W-bf4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ba6-i1-fRl" secondAttribute="trailing" id="Byl-0H-vCR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gTL-qL-22E" secondAttribute="bottom" id="cEE-6I-t0j"/>
+                            <constraint firstAttribute="trailing" secondItem="gTL-qL-22E" secondAttribute="trailing" id="k3c-43-dkj"/>
+                            <constraint firstItem="gTL-qL-22E" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="115" id="l2B-bq-ywv"/>
+                            <constraint firstItem="gTL-qL-22E" firstAttribute="top" secondItem="ba6-i1-fRl" secondAttribute="bottom" id="ov0-9O-Kof"/>
+                            <constraint firstItem="ba6-i1-fRl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pnC-d9-Pkb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="tLo-ob-BJe"/>
+                    <connections>
+                        <outlet property="pagingScroll" destination="gTL-qL-22E" id="PLr-KP-sne"/>
+                        <outletCollection property="todoCategory" destination="rm6-6f-XOQ" id="OIY-ud-1tf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
