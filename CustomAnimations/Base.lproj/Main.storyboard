@@ -44,28 +44,71 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTd-h4-Hc4">
+                                <rect key="frame" x="300" y="103.5" width="59" height="30"/>
+                                <state key="normal" title="Gradient"/>
+                                <connections>
+                                    <segue destination="pOl-j9-ojg" kind="show" id="xqB-Vo-8L5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ba6-i1-fRl" firstAttribute="top" secondItem="uTd-h4-Hc4" secondAttribute="bottom" constant="25" id="0ql-o1-dpS"/>
                             <constraint firstItem="gTL-qL-22E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2kc-8W-bf4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ba6-i1-fRl" secondAttribute="trailing" id="Byl-0H-vCR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gTL-qL-22E" secondAttribute="bottom" id="cEE-6I-t0j"/>
                             <constraint firstAttribute="trailing" secondItem="gTL-qL-22E" secondAttribute="trailing" id="k3c-43-dkj"/>
                             <constraint firstItem="gTL-qL-22E" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="115" id="l2B-bq-ywv"/>
                             <constraint firstItem="gTL-qL-22E" firstAttribute="top" secondItem="ba6-i1-fRl" secondAttribute="bottom" id="ov0-9O-Kof"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uTd-h4-Hc4" secondAttribute="trailing" constant="16" id="pWZ-zu-2sD"/>
                             <constraint firstItem="ba6-i1-fRl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pnC-d9-Pkb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="tLo-ob-BJe"/>
                     <connections>
+                        <outlet property="categoryStack" destination="ba6-i1-fRl" id="aG6-gX-QDF"/>
                         <outlet property="pagingScroll" destination="gTL-qL-22E" id="PLr-KP-sne"/>
-                        <outletCollection property="todoCategory" destination="rm6-6f-XOQ" id="OIY-ud-1tf"/>
+                        <outletCollection property="todoCategory" destination="rm6-6f-XOQ" collectionClass="NSMutableArray" id="OIY-ud-1tf"/>
+                        <outletCollection property="todoCategory" destination="qkM-Fy-8Ek" collectionClass="NSMutableArray" id="G6I-Me-7FL"/>
+                        <outletCollection property="todoCategory" destination="aT4-dW-euf" collectionClass="NSMutableArray" id="dIQ-4D-1WG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="998" y="233"/>
+        </scene>
+        <!--Gradient View Controller-->
+        <scene sceneID="crB-gv-LML">
+            <objects>
+                <viewController id="pOl-j9-ojg" customClass="GradientViewController" customModule="CustomAnimations" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CkZ-Vq-c7i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYO-tB-1H8" customClass="CountdownProgressBar" customModule="CustomAnimations" customModuleProvider="target">
+                                <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Dod-yy-Fgs"/>
+                                    <constraint firstAttribute="width" secondItem="kYO-tB-1H8" secondAttribute="height" multiplier="1:1" id="NLV-YG-Ntg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kYO-tB-1H8" firstAttribute="centerX" secondItem="CkZ-Vq-c7i" secondAttribute="centerX" id="UoH-kH-JiK"/>
+                            <constraint firstItem="kYO-tB-1H8" firstAttribute="centerY" secondItem="CkZ-Vq-c7i" secondAttribute="centerY" id="wPY-jw-r6V"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hbh-Hp-xw9"/>
+                    </view>
+                    <connections>
+                        <outlet property="countdownProgressBar" destination="kYO-tB-1H8" id="ljn-j5-pbZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9B2-VU-D3a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1766" y="233"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vf1-Mq-p2y">
