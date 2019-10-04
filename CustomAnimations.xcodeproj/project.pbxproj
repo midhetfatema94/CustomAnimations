@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -205,7 +205,7 @@
 				};
 			};
 			buildConfigurationList = 8336ACF1234487150039EA8D /* Build configuration list for PBXProject "CustomAnimations" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 9.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
