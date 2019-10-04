@@ -13,8 +13,10 @@ class TodoListViewController: UIViewController {
     var welcomeLabel: UILabel!
     var nameLabel: UILabel!
     var underlineLabel: UIView!
+    var labelTimer: Timer!
     
     var colorArray = [UIColor.red, UIColor.blue, UIColor.green]
+    var initialLoad = true
     
     let categoryArr = ["Daily Tasks", "Groceries", "Deadlines"]
     let todoDailyArr = ["Cleaning", "Cooking", "Bathing"]
@@ -22,23 +24,41 @@ class TodoListViewController: UIViewController {
     let todoWorkArr = ["Work Update", "Emails", "Jira"]
     
     @IBOutlet weak var pagingScroll: UIScrollView!
-    @IBOutlet var todoCategory: [UILabel]!
+    @IBOutlet var todoCategory: [UIButton]!
     @IBOutlet weak var categoryStack: UIStackView!
+    @IBOutlet weak var addNewTodoBtn: UIButton!
+    
+    @IBAction func selectTodo(_ sender: UIButton) {
+        
+        let contentOffsetPoint = sender.tag * Int(self.view.frame.width)
+        
+        UIView.animate(withDuration: 0.75) {
+            self.pagingScroll.setContentOffset(CGPoint(x: contentOffsetPoint, y: 0), animated: false)
+        }
+    }
+    
+    @IBAction func addNewTodo(_ sender: UIButton) {
+        
+        let newTodoPage = UIViewController()
+        self.navigationController?.pushViewController(newTodoPage, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        welcomeLabel = UILabel(frame: CGRect(x: 20, y: 70, width: 100, height: 25))
+        self.navigationController?.delegate = self
+        
+        welcomeLabel = UILabel(frame: CGRect(x: -300, y: 70, width: 100, height: 25))
         welcomeLabel.text = "Welcome"
         self.view.addSubview(welcomeLabel)
         
-        nameLabel = UILabel(frame: CGRect(x: 20, y: 95, width: 100, height: 25))
+        nameLabel = UILabel(frame: CGRect(x: -300, y: 95, width: 100, height: 25))
         nameLabel.text = "Midhet"
         self.view.addSubview(nameLabel)
         
         pagingScroll.delegate = self
         pagingScroll.isPagingEnabled = true
-        pagingScroll.contentSize = CGSize(width: UIScreen.main.bounds.width * 3, height: pagingScroll.bounds.height)
+        pagingScroll.contentSize = CGSize(width: UIScreen.main.bounds.width * CGFloat(todoCategory.count), height: pagingScroll.bounds.height)
         
         let todoDaily = Todo(frame: pagingScroll.bounds)
         todoDaily.addTasks(taskArray: todoDailyArr)
@@ -54,11 +74,38 @@ class TodoListViewController: UIViewController {
         todoDeadlines.addTasks(taskArray: todoWorkArr)
         pagingScroll.addSubview(todoDeadlines)
         
-        underlineLabel = UIView(frame: CGRect(x: 0, y: categoryStack.frame.origin.y + categoryStack.frame.height, width: todoCategory[0].intrinsicContentSize.width, height: 2))
-        underlineLabel.center.x = todoCategory[0].center.x
+        underlineLabel = UIView(frame: CGRect(x: 0, y: categoryStack.frame.origin.y, width: todoCategory[0].intrinsicContentSize.width, height: 2))
         underlineLabel.layer.zPosition = 100
         underlineLabel.backgroundColor = UIColor.black
         self.view.addSubview(underlineLabel)
+        
+        labelTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.animateEachLabel), userInfo: nil, repeats: true)
+        labelTimer.fire()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if initialLoad {
+            underlineLabel.frame.origin.y = categoryStack.frame.origin.y + categoryStack.frame.height
+            underlineLabel.center.x = todoCategory[0].center.x
+            initialLoad = false
+        }
+    }
+    
+    @objc func animateBothLabels() {
+        UIView.animate(withDuration: 1.5, animations: {
+            self.welcomeLabel.frame.origin.x = 20
+            self.nameLabel.frame.origin.x = 20
+        })
+    }
+    
+    @objc func animateEachLabel() {
+        UIView.animate(withDuration: 1.5, animations: {
+            self.welcomeLabel.frame.origin.x = 20
+        }) {_ in
+            UIView.animate(withDuration: 1.5) {
+                self.nameLabel.frame.origin.x = 20
+            }
+        }
     }
 }
 
@@ -66,7 +113,39 @@ extension TodoListViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
         let arrayIndex = Int(pageIndex)
-        underlineLabel.center.x = todoCategory[arrayIndex].center.x
+        underlineLabel.center.x = getDraggablePoint(scrollView: scrollView)
         underlineLabel.frame.size.width = todoCategory[arrayIndex].intrinsicContentSize.width
     }
+    
+    func getDraggablePoint(scrollView: UIScrollView) -> CGFloat {
+        let progress = scrollView.contentOffset.x / (scrollView.contentSize.width - scrollView.bounds.size.width)
+        let minPoint = todoCategory.first?.center.x ?? 0
+        let maxPoint = todoCategory.last?.center.x ?? 0
+        let pathValue = maxPoint - minPoint
+        return (pathValue * progress) + minPoint
+    }
+}
+
+extension TodoListViewController: CircleTransitionable {
+    var triggerButton: UIButton {
+        return addNewTodoBtn
+    }
+    
+    var mainView: UIView {
+        return self.view
+    }
+}
+
+extension TodoListViewController: UINavigationControllerDelegate {
+
+    func navigationController(_ navigationController: UINavigationController,
+                              animationControllerFor operation: UINavigationController.Operation,
+                              from fromVC: UIViewController,
+                              to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if let _ = fromVC as? TodoListViewController, let _ = toVC as? NewTodoViewController {
+            return CircularTransition()
+        }
+        return nil
+    }
+
 }

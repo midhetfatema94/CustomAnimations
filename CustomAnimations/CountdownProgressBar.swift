@@ -2,7 +2,7 @@
 //  CountdownProgressBar.swift
 //  CustomAnimations
 //
-//  Created by Waveline Media on 10/3/19.
+//  Created by Midhet Sulemani on 10/3/19.
 //  Copyright © 2019 DevFest. All rights reserved.
 //
 
@@ -19,8 +19,7 @@ class CountdownProgressBar: UIView {
     
     // label that will show the remaining time
     private lazy var remainingTimeLabel: UILabel = {
-        let remainingTimeLabel = UILabel(frame: CGRect(origin: CGPoint(x: 0, y: 0)
-            , size: CGSize(width: bounds.width, height: bounds.height)))
+        let remainingTimeLabel = UILabel(frame: self.bounds)
         remainingTimeLabel.font = UIFont.systemFont(ofSize: 32, weight: .heavy)
         remainingTimeLabel.textAlignment = NSTextAlignment.center
         return remainingTimeLabel
@@ -207,7 +206,6 @@ class CountdownProgressBar: UIView {
         timer.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(handleTimerTick), userInfo: nil, repeats: true)
         beginAnimation()
-        
     }
     
 }

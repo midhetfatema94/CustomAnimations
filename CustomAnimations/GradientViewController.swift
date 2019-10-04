@@ -2,7 +2,7 @@
 //  GradientViewController.swift
 //  CustomAnimations
 //
-//  Created by Waveline Media on 10/3/19.
+//  Created by Midhet Sulemani on 10/3/19.
 //  Copyright © 2019 DevFest. All rights reserved.
 //
 
@@ -10,9 +10,8 @@ import UIKit
 
 class GradientViewController: UIViewController, CAAnimationDelegate {
     
-    
     let gradient = CAGradientLayer()
-    
+    var countdownView: CountdownProgressBar!
     // list of array holding 2 colors
     var gradientSet = [[CGColor]]()
     // current gradient index
@@ -25,20 +24,26 @@ class GradientViewController: UIViewController, CAAnimationDelegate {
     
     
     // create outlet in the storyboard with type CountdownProgressBar
-    @IBOutlet weak var countdownProgressBar: CountdownProgressBar!
+    @IBOutlet weak var countdownProgressBar: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        countdownView = CountdownProgressBar(frame: countdownProgressBar.bounds)
+        countdownProgressBar.addSubview(countdownView)
+        countdownView.startCoundown(duration: 20, showPulse: false)
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
 //        createGradientView()
-        countdownProgressBar.startCoundown(duration: 10, showPulse: false)
+//        countdownProgressBar.startCoundown(duration: 20, showPulse: false)
     }
     
     /// Creates gradient view
@@ -65,7 +70,7 @@ class GradientViewController: UIViewController, CAAnimationDelegate {
     @objc func handleTap() {
         print("Tapped")
         
-        countdownProgressBar.startCoundown(duration: 10, showPulse: true)
+        countdownView.startCoundown(duration: 20, showPulse: true)
     }
     
     func animateGradient() {

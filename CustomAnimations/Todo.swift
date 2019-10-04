@@ -2,7 +2,7 @@
 //  Todo.swift
 //  CustomAnimations
 //
-//  Created by Waveline Media on 10/3/19.
+//  Created by Midhet Sulemani on 10/3/19.
 //  Copyright © 2019 DevFest. All rights reserved.
 //
 
