@@ -126,9 +126,6 @@ class CountdownProgressBar: UIView {
         layer.addSublayer(foregroundGradientLayer)
         
         addSubview(remainingTimeLabel)
-        
-        print(remainingTimeLabel.frame)
-        
     }
     
     private func beginAnimation() {

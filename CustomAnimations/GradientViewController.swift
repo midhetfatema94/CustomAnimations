@@ -68,8 +68,6 @@ class GradientViewController: UIViewController, CAAnimationDelegate {
     }
     
     @objc func handleTap() {
-        print("Tapped")
-        
         countdownView.startCoundown(duration: 20, showPulse: true)
     }
     
