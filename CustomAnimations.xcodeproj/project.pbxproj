@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		635D89372347DE1C0040F200 /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D89362347DE1C0040F200 /* CircularTransition.swift */; };
 		635D893B2347F1170040F200 /* NewTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D893A2347F1170040F200 /* NewTodoViewController.swift */; };
+		637674E4234D10A800FEA12B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637674E3234D10A800FEA12B /* ViewController.swift */; };
 		637D0117234792CF00A06AB6 /* CountdownProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637D0113234792CF00A06AB6 /* CountdownProgressBar.swift */; };
 		637D0118234792CF00A06AB6 /* Todo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637D0114234792CF00A06AB6 /* Todo.xib */; };
 		637D0119234792CF00A06AB6 /* GradientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637D0115234792CF00A06AB6 /* GradientViewController.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		635D89362347DE1C0040F200 /* CircularTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
 		635D893A2347F1170040F200 /* NewTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoViewController.swift; sourceTree = "<group>"; };
+		637674E3234D10A800FEA12B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		637D0113234792CF00A06AB6 /* CountdownProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownProgressBar.swift; sourceTree = "<group>"; };
 		637D0114234792CF00A06AB6 /* Todo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Todo.xib; sourceTree = "<group>"; };
 		637D0115234792CF00A06AB6 /* GradientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		637674E5234D205200FEA12B /* Todo */ = {
+			isa = PBXGroup;
+			children = (
+				637D0116234792CF00A06AB6 /* Todo.swift */,
+				637D0114234792CF00A06AB6 /* Todo.xib */,
+			);
+			path = Todo;
+			sourceTree = "<group>";
+		};
 		8336ACED234487150039EA8D = {
 			isa = PBXGroup;
 			children = (
@@ -113,11 +124,11 @@
 				8336ACFB234487150039EA8D /* TodoListViewController.swift */,
 				635D893A2347F1170040F200 /* NewTodoViewController.swift */,
 				8336ACFD234487150039EA8D /* Main.storyboard */,
+				637674E3234D10A800FEA12B /* ViewController.swift */,
 				635D89362347DE1C0040F200 /* CircularTransition.swift */,
 				637D0113234792CF00A06AB6 /* CountdownProgressBar.swift */,
 				637D0115234792CF00A06AB6 /* GradientViewController.swift */,
-				637D0116234792CF00A06AB6 /* Todo.swift */,
-				637D0114234792CF00A06AB6 /* Todo.xib */,
+				637674E5234D205200FEA12B /* Todo */,
 				8336AD00234487160039EA8D /* Assets.xcassets */,
 				8336AD02234487160039EA8D /* LaunchScreen.storyboard */,
 				8336AD05234487160039EA8D /* Info.plist */,
@@ -281,6 +292,7 @@
 				635D893B2347F1170040F200 /* NewTodoViewController.swift in Sources */,
 				8336ACFA234487150039EA8D /* AppDelegate.swift in Sources */,
 				637D0117234792CF00A06AB6 /* CountdownProgressBar.swift in Sources */,
+				637674E4234D10A800FEA12B /* ViewController.swift in Sources */,
 				637D011A234792CF00A06AB6 /* Todo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

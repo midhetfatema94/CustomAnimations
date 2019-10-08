@@ -195,11 +195,15 @@ class CountdownProgressBar: UIView {
      - Returns: null.
      */
     
-    func startCoundown(duration: Double, showPulse: Bool = false) {
-        self.duration = duration
+    func startCoundown(duration: Double?, showPulse: Bool = false, showMS: Bool?) {
+        self.duration = duration ?? 20.0
         self.showPulse = showPulse
-        remainingTime = duration
-        remainingTimeLabel.text = "\(remainingTime)"
+        remainingTime = duration ?? 20.0
+        if showMS ?? true {
+            remainingTimeLabel.text = "\(Int(remainingTime))"
+        } else {
+            remainingTimeLabel.text = "\(remainingTime)"
+        }
         timer.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(handleTimerTick), userInfo: nil, repeats: true)
         beginAnimation()

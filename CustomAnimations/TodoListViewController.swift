@@ -48,12 +48,14 @@ class TodoListViewController: UIViewController {
         
         self.navigationController?.delegate = self
         
-        welcomeLabel = UILabel(frame: CGRect(x: -300, y: 70, width: 100, height: 25))
+        welcomeLabel = UILabel(frame: CGRect(x: -300, y: 90, width: 150, height: 25))
         welcomeLabel.text = "Welcome"
+        welcomeLabel.font = UIFont(name: "Avenir", size: 30)
         self.view.addSubview(welcomeLabel)
         
-        nameLabel = UILabel(frame: CGRect(x: -300, y: 95, width: 100, height: 25))
+        nameLabel = UILabel(frame: CGRect(x: -300, y: 130, width: 100, height: 25))
         nameLabel.text = "Midhet"
+        nameLabel.font = UIFont(name: "Avenir", size: 30)
         self.view.addSubview(nameLabel)
         
         pagingScroll.delegate = self
@@ -76,7 +78,8 @@ class TodoListViewController: UIViewController {
         
         underlineLabel = UIView(frame: CGRect(x: 0, y: categoryStack.frame.origin.y, width: todoCategory[0].intrinsicContentSize.width, height: 2))
         underlineLabel.layer.zPosition = 100
-        underlineLabel.backgroundColor = UIColor.black
+        underlineLabel.backgroundColor = UIColor(red: 66/255, green: 66/255, blue: 66/255, alpha: 1)
+        underlineLabel.alpha = 0
         self.view.addSubview(underlineLabel)
         
         labelTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.animateEachLabel), userInfo: nil, repeats: true)
@@ -87,6 +90,9 @@ class TodoListViewController: UIViewController {
         if initialLoad {
             underlineLabel.frame.origin.y = categoryStack.frame.origin.y + categoryStack.frame.height
             underlineLabel.center.x = todoCategory[0].center.x
+            UIView.animate(withDuration: 0.2) {
+                self.underlineLabel.alpha = 1
+            }
             initialLoad = false
         }
     }

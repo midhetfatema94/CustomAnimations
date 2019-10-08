@@ -21,8 +21,6 @@ class Todo: UIView {
             UIView.animate(withDuration: 0.2, animations: {
                 sender.isSelected = !sender.isSelected
                 sender.alpha = 1
-            }, completion: {_ in
-                
             })
         })
     }
