@@ -33,7 +33,8 @@ class TodoListViewController: UIViewController {
         let contentOffsetPoint = sender.tag * Int(self.view.frame.width)
         
         UIView.animate(withDuration: 0.75) {
-            self.pagingScroll.setContentOffset(CGPoint(x: contentOffsetPoint, y: 0), animated: false)
+            self.pagingScroll.setContentOffset(
+                CGPoint(x: contentOffsetPoint, y: 0), animated: false)
         }
     }
     
